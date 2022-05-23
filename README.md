@@ -4,6 +4,13 @@
 
 This repository provides a DAI staking mechanism; whereby, the user receives PmknToken as a reward for staking DAI in the contract. Further, the user can purchase a NFT through the NFT factory named JackOLantern. The StrawberryTokens are sent to a lottery pool inside the Lottery contract. Finally, each NFT includes a tokenId which acts as a lottery ticket. The lottery feature uses Chainlink's VRF to provide a verifiably random number. The winner receives the contents of the lottery pool. 
 
+## Tutorial URL
+https://medium.com/coinmonks/yield-farming-tutorial-part-1-3fd5972ce717
+
+https://medium.com/coinmonks/yield-farming-tutorial-part-2-ea5b5254805d
+
+***
+
 ## Installation
 In directory root:
 ```
