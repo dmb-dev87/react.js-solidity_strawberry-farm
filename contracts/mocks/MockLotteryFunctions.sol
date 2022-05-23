@@ -32,7 +32,7 @@ contract MockLotteryFunctions is Ownable, VRFConsumerBase {
         uint256 indexed _winningNumber
     );
     event LotteryClaim(address indexed winner, uint256 indexed amount);
-    event AddPmkn(address indexed from, uint256 indexed amount);
+    event AddSbt(address indexed from, uint256 indexed amount);
     event WithdrawLink(address indexed from, uint256 indexed amount);
 
     constructor(
@@ -72,11 +72,11 @@ contract MockLotteryFunctions is Ownable, VRFConsumerBase {
         emit NumberReceived(_requestId, winningNum);
     }
 
-    function addToLotteryPool(address from, uint256 pmkn) public {
-        require(pmkn > 0, "Cannot add zero");
-        lotteryPool += pmkn;
-        sbtToken.transferFrom(from, address(this), pmkn);
-        emit AddPmkn(msg.sender, pmkn);
+    function addToLotteryPool(address from, uint256 sbt) public {
+        require(sbt > 0, "Cannot add zero");
+        lotteryPool += sbt;
+        sbtToken.transferFrom(from, address(this), sbt);
+        emit AddSbt(msg.sender, sbt);
     }
 
     function validateWinner(address user) internal view returns (bool) {

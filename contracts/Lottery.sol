@@ -70,10 +70,10 @@ contract Lottery is Ownable, VRFConsumerBase {
         emit NumberReceived(_requestId, winningNum);
     }
 
-    function addToLotteryPool(address from, uint256 pmkn) public {
-        require(pmkn > 0, "Cannot add zero");
-        lotteryPool += pmkn;
-        sbtToken.transferFrom(from, address(this), pmkn);
+    function addToLotteryPool(address from, uint256 sbt) public {
+        require(sbt > 0, "Cannot add zero");
+        lotteryPool += sbt;
+        sbtToken.transferFrom(from, address(this), sbt);
     }
 
     function validateWinner(address user) internal view returns (bool) {

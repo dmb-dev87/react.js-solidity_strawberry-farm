@@ -69,9 +69,7 @@ describe("StrawberryFarm Contract", () => {
       nftPrice
     ]
 
-    // PmknFarm Contract deployment
     sbtFarm = await SbtFarm.deploy(...sbtFarmParams)
-
   })
 
   describe("Init", async () => {

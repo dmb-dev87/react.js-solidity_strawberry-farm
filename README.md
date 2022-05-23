@@ -2,7 +2,7 @@
 
 <img width="1367" alt="Screen Shot 2021-06-22 at 12 27 31 PM" src="https://user-images.githubusercontent.com/69282788/122964969-cd00e180-d355-11eb-899a-21e59c621ed4.png">
 
-This repository provides a DAI staking mechanism; whereby, the user receives PmknToken as a reward for staking DAI in the contract. Further, the user can purchase a NFT through the NFT factory named JackOLantern. The StrawberryTokens are sent to a lottery pool inside the Lottery contract. Finally, each NFT includes a tokenId which acts as a lottery ticket. The lottery feature uses Chainlink's VRF to provide a verifiably random number. The winner receives the contents of the lottery pool. 
+This repository provides a DAI staking mechanism; whereby, the user receives StrawberryToken as a reward for staking DAI in the contract. Further, the user can purchase a NFT through the NFT factory named JackOLantern. The StrawberryTokens are sent to a lottery pool inside the Lottery contract. Finally, each NFT includes a tokenId which acts as a lottery ticket. The lottery feature uses Chainlink's VRF to provide a verifiably random number. The winner receives the contents of the lottery pool. 
 
 ## Tutorial URL
 https://medium.com/coinmonks/yield-farming-tutorial-part-1-3fd5972ce717
@@ -37,7 +37,7 @@ This dApp accepts DAI as its staking token; therefore, you'll need to acquire Ko
 * Kovan LINK
     * https://kovan.chain.link/
 
-The Hardhat configuration file and scripts have been set up to deploy on the Kovan testnet. Use the .env_sample as a template for the requisite API_KEY and PRIVATE_KEY. Infura and Alchemy offer free API access to testnets and mainnet. Once you have an API endpoint and your private key from MetaMask, create a dotenv file within the PmknFarm root:
+The Hardhat configuration file and scripts have been set up to deploy on the Kovan testnet. Use the .env_sample as a template for the requisite API_KEY and PRIVATE_KEY. Infura and Alchemy offer free API access to testnets and mainnet. Once you have an API endpoint and your private key from MetaMask, create a dotenv file within the StrawberryFarm root:
 
 ```
 touch .env

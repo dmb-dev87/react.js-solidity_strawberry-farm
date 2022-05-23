@@ -193,11 +193,11 @@ describe("Lottery Contract", () => {
         .withArgs(bob.address, ethers.utils.parseEther("25"))
     })
 
-    it("should emit AddPmkn", async () => {
+    it("should emit AddSbt", async () => {
       let amount = ethers.utils.parseEther("10")
       await sbtToken.approve(lottery.address, amount)
       expect(await lottery.addToLotteryPool(owner.address, amount))
-        .to.emit(lottery, "AddPmkn")
+        .to.emit(lottery, "AddSbt")
         .withArgs(owner.address, amount)
     })
 
