@@ -62,7 +62,7 @@ In the root, run:
 ```
 npx hardhat run scripts/deployFarm.ts --network kovan
 ```
-Deployed Addressed:
+Deployed Addresses:
 ```
 SbtToken address: 0x9C247bC665d4Cb677eD9Eb5419fD1fa33DA32B68
 BuddhaNft address: 0x8A9Dc707011bF2f12290e19BA0f13d7304fda52a
