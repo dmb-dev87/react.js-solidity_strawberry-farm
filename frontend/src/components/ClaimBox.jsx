@@ -111,7 +111,7 @@ export default function StakeBox() {
                 <Banner>
                     <TopBanner>
                         <div>
-                            {parseFloat(accruing + unrealized).toFixed(3)} SBT
+                            {parseFloat(accruing + unrealized).toFixed(2)} SBT
                         </div>
                     </TopBanner>
                 </Banner>
@@ -123,7 +123,7 @@ export default function StakeBox() {
                 <Banner>
                     <BottomBanner>
                         <Circle>
-                            Rate: {stakingBalance ? ethers.utils.formatEther(stakingBalance) : "0"} / day
+                            Rate: {stakingBalance ? Number.parseFloat(ethers.utils.formatEther(stakingBalance)).toFixed(2) : "0"} / day
                         </Circle>
                     </BottomBanner>
                 </Banner>

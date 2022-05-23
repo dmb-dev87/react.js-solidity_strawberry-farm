@@ -194,7 +194,7 @@ export default function NavBar() {
                     </Network>
                     <AccountWrapper>
                         <Eth>
-                            {ethBalance ? Number.parseFloat(ethers.utils.formatEther(ethBalance)).toPrecision(3) : "0"} ETH
+                            {ethBalance ? Number.parseFloat(ethers.utils.formatEther(ethBalance)).toFixed(3) : "0"} ETH
                         </Eth>
                         <Account>
                             {userAddress ? userAddress.slice(0, 5) + "..." + userAddress.slice(38, 42) : null}

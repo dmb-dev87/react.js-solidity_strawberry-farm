@@ -12,22 +12,26 @@ async function main() {
 
   const SbtToken = await ethers.getContractFactory("StrawberryToken")
   const sbtToken = await SbtToken.deploy()
+  await sbtToken.deployed()
   console.log(`SbtToken address: ${sbtToken.address}`)
 
   const BuddhaNft = await ethers.getContractFactory("BuddhaNft")
   const buddhaNft = await BuddhaNft.deploy()
+  await buddhaNft.deployed()
   console.log(`BuddhaNft address: ${buddhaNft.address}`)
 
   const Lottery = await ethers.getContractFactory("Lottery");
   const lottery = await Lottery.deploy(buddhaNft.address, sbtToken.address, ...lottoConfig);
+  await lottery.deployed()
   console.log(`Lottery contract address: ${lottery.address}`);
 
   const SbtFarm = await ethers.getContractFactory("StrawberryFarm");
   const sbtFarm = await SbtFarm.deploy(
     ...mainConfig, sbtToken.address, buddhaNft.address, lottery.address, nftPrice
   )
-
+  await sbtFarm.deployed()
   console.log(`SbtFarm address: ${sbtFarm.address}`)
+  
   console.log(`NFT Price: ${ethers.utils.formatEther(nftPrice)} SBT`)
 
   const sbtMinter = await sbtToken.MINTER_ROLE()

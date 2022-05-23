@@ -179,13 +179,13 @@ export default function StakeBox() {
                         <Circle>
                             Unstaked:
                             <div>
-                                {daiBalance ? ethers.utils.formatEther(daiBalance) : "0"}
+                                {daiBalance ? Number.parseFloat(ethers.utils.formatEther(daiBalance)).toFixed(2) : "0"}
                             </div>
                         </Circle>
                         <Circle>
                             Staked:
                             <div>
-                                {stakingBalance ? ethers.utils.formatEther(stakingBalance) : "0"}
+                                {stakingBalance ? Number.parseFloat(ethers.utils.formatEther(stakingBalance)).toFixed(2) : "0"}
                             </div>
                         </Circle>
                     </BottomBanner>

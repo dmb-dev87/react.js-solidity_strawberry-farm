@@ -110,7 +110,7 @@ function App() {
     }, [setProvider])
 
     const loadDaiContract = useCallback(async (_provider) => {
-        let daiAddress = "0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa"
+        let daiAddress = "0x04DF6e4121c27713ED22341E7c7Df330F56f289B"
         let contract = new ethers.Contract(daiAddress, ERC20.abi, _provider)
         setDaiContract(contract)
     }, [setDaiContract])

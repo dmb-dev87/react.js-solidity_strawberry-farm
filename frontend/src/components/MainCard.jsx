@@ -55,7 +55,7 @@ export default function MainCard() {
         <Container>
             <Card>
                 <CardBanner>
-                    SBT Balance: {sbtBalance ? Number.parseFloat(ethers.utils.formatEther(sbtBalance)).toFixed(3).toString() : "0"}
+                    SBT Balance: {sbtBalance ? Number.parseFloat(ethers.utils.formatEther(sbtBalance)).toFixed(2).toString() : "0"}
                 </CardBanner>
                 <AlignBox>
                     <StakeBox />

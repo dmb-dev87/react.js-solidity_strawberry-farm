@@ -1,6 +1,6 @@
 # Strawberry Farm
 
-<img width="1367" alt="Screen Shot 2021-06-22 at 12 27 31 PM" src="https://user-images.githubusercontent.com/69282788/122964969-cd00e180-d355-11eb-899a-21e59c621ed4.png">
+<img width="1367" alt="Screen Shot 2022-05-23 at 12 27 31 PM" src="./frontend.png">
 
 This repository provides a DAI staking mechanism; whereby, the user receives StrawberryToken as a reward for staking DAI in the contract. Further, the user can purchase a NFT through the NFT factory named Buddha Nft. The StrawberryTokens are sent to a lottery pool inside the Lottery contract. Finally, each NFT includes a tokenId which acts as a lottery ticket. The lottery feature uses Chainlink's VRF to provide a verifiably random number. The winner receives the contents of the lottery pool. 
 
@@ -64,13 +64,13 @@ npx hardhat run scripts/deployFarm.ts --network kovan
 ```
 Deployed Addresses:
 ```
-SbtToken address: 0x9C247bC665d4Cb677eD9Eb5419fD1fa33DA32B68
-BuddhaNft address: 0x8A9Dc707011bF2f12290e19BA0f13d7304fda52a
-Lottery contract address: 0xd3687f5ce6BBDDa8683e412f3094920dad47Ef73
-SbtFarm address: 0x1E71e827F47F80284e09fdE17235607A0073ec48
+SbtToken address: 0x4053bb32815bfCD504328549B73B36Ee6e46086a
+BuddhaNft address: 0x85CD0a201E2561b37e62fccd57480aA6E4F821C7
+Lottery contract address: 0xbb3b9d376C1faA01B770b40C4449E3A6530bd972
+SbtFarm address: 0x2458C656619c7afD61886E2E4b2b27BFe23Ea962
 NFT Price: 1.0 SBT
-SBTToken minter role transferred to: 0x1E71e827F47F80284e09fdE17235607A0073ec48
-Buddha NFT minter role transferred to 0x1E71e827F47F80284e09fdE17235607A0073ec48
+SBTToken minter role transferred to: 0x2458C656619c7afD61886E2E4b2b27BFe23Ea962
+Buddha NFT minter role transferred to 0x2458C656619c7afD61886E2E4b2b27BFe23Ea962
 ```
 
 

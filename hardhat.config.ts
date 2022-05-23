@@ -1,5 +1,6 @@
 import "@nomiclabs/hardhat-waffle";
 import "@nomiclabs/hardhat-web3"
+import "@nomiclabs/hardhat-etherscan";
 
 require('dotenv').config()
 
@@ -20,5 +21,8 @@ export default {
       url: process.env.KOVAN_KEY,
       accounts: [`0x${process.env.PRIVATE_KEY}`]
     }
-  }
+  },
+  etherscan: {
+    apiKey: process.env.ETHERSCAN_API_KEY,
+  },
 }
