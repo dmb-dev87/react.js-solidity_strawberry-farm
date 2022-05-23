@@ -62,6 +62,15 @@ In the root, run:
 ```
 npx hardhat run scripts/deployFarm.ts --network kovan
 ```
-
+Deployed Addressed:
+```
+SbtToken address: 0x9C247bC665d4Cb677eD9Eb5419fD1fa33DA32B68
+BuddhaNft address: 0x8A9Dc707011bF2f12290e19BA0f13d7304fda52a
+Lottery contract address: 0xd3687f5ce6BBDDa8683e412f3094920dad47Ef73
+SbtFarm address: 0x1E71e827F47F80284e09fdE17235607A0073ec48
+NFT Price: 1.0 SBT
+SBTToken minter role transferred to: 0x1E71e827F47F80284e09fdE17235607A0073ec48
+Buddha NFT minter role transferred to 0x1E71e827F47F80284e09fdE17235607A0073ec48
+```
 
 
