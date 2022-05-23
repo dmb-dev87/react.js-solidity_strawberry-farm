@@ -81,53 +81,53 @@ export default function StakeBox() {
 
     const {
         stakingBalance,
-        pmknYield,
-        pmknUnrealizedYield,
+        sbtYield,
+        sbtUnrealizedYield,
     } = useUser();
 
     const {
         provider,
-        pmknFarmContract
+        sbtFarmContract
     } = useContract();
 
     /**
      * @notice Calls the withdrawYield function
      */
-    const withdrawYield = async() => {
+    const withdrawYield = async () => {
         let signer = provider.getSigner()
-        let tx = await pmknFarmContract.connect(signer).withdrawYield()
+        let tx = await sbtFarmContract.connect(signer).withdrawYield()
         return tx
     }
-    
-    const accruing = pmknYield / 1e18
-    const unrealized = pmknUnrealizedYield ? pmknUnrealizedYield / 1e18 : 0
 
-    return(
+    const accruing = sbtYield / 1e18
+    const unrealized = sbtUnrealizedYield ? sbtUnrealizedYield / 1e18 : 0
+
+    return (
         <Container>
             <Title>
                 Claim Rewards
             </Title>
-        <Box>
-            <Banner>
-                <TopBanner>
-                    <div>
-                        { parseFloat(accruing + unrealized).toFixed(3) } PMKN
-                    </div>
-                </TopBanner>
-            </Banner>
-            <div>
-                <ClaimButton onClick={withdrawYield}>
-                    Claim
-                </ClaimButton>
-            </div>
-            <Banner>
-                <BottomBanner>
-                    <Circle>
-                            Rate: { stakingBalance ? ethers.utils.formatEther(stakingBalance) : "0" } / day
-                    </Circle>
-                </BottomBanner>
-            </Banner>
-        </Box>
+            <Box>
+                <Banner>
+                    <TopBanner>
+                        <div>
+                            {parseFloat(accruing + unrealized).toFixed(3)} SBT
+                        </div>
+                    </TopBanner>
+                </Banner>
+                <div>
+                    <ClaimButton onClick={withdrawYield}>
+                        Claim
+                    </ClaimButton>
+                </div>
+                <Banner>
+                    <BottomBanner>
+                        <Circle>
+                            Rate: {stakingBalance ? ethers.utils.formatEther(stakingBalance) : "0"} / day
+                        </Circle>
+                    </BottomBanner>
+                </Banner>
+            </Box>
         </Container>
     )
 }

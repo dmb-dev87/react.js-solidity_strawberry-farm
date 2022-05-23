@@ -90,7 +90,7 @@ const Eth = styled.div`
     margin-left: .5rem;
 `;
 
- 
+
 export default function NavBar() {
 
     const [isOwner, setIsOwner] = useState(false)
@@ -108,7 +108,7 @@ export default function NavBar() {
         isOwnerOpen,
         lotteryContract,
         lotteryCount,
-        jackContract,
+        buddhaContract,
         owner,
         setIsLotteryOpen,
         setIsNFTOpen,
@@ -119,20 +119,20 @@ export default function NavBar() {
     /**
      * @notice Fetch functions for the lottery
      */
-    
-    const loadWinningNumber = useCallback(async() => {
+
+    const loadWinningNumber = useCallback(async () => {
         let number = await lotteryContract.winningNumber(lotteryCount - 1)
         setWinningNumber(number.toString())
     }, [lotteryCount, lotteryContract, setWinningNumber])
 
-    const loadUserNumbers = useCallback(async() => {
+    const loadUserNumbers = useCallback(async () => {
         try {
             let nftString = ""
-            let total = await jackContract.balanceOf(userAddress)
+            let total = await buddhaContract.balanceOf(userAddress)
             let i = 0
-            while(i < total){
-                let nfts = await jackContract.tokenOfOwnerByIndex(userAddress, i)
-                if (nftString === ""){
+            while (i < total) {
+                let nfts = await buddhaContract.tokenOfOwnerByIndex(userAddress, i)
+                if (nftString === "") {
                     nftString = nfts.toString()
                 } else {
                     nftString += `, ${nfts.toString()}`
@@ -143,14 +143,14 @@ export default function NavBar() {
         } catch (error) {
             console.log(error)
         }
-    }, [jackContract, userAddress, setUserNFTs])
+    }, [buddhaContract, userAddress, setUserNFTs])
 
     /**
      * @notice Functions handling modals for lottery, nft, and owner
      */
 
     async function handleLottery() {
-        try{
+        try {
             await loadWinningNumber()
         } catch (error) {
             console.log("Lottery not initiated", error)
@@ -170,38 +170,38 @@ export default function NavBar() {
     const ownerComponent = <OwnerButton onClick={handleOwner} >Owner</OwnerButton>
 
     useEffect(() => {
-        if(userAddress === owner){
+        if (userAddress === owner) {
             setIsOwner(true)
         } else {
             setIsOwner(false)
         }
     }, [userAddress, owner, setIsOwner])
 
-    return(
-            <MetaContainer>
-                <Container>
-                    <Title>Pmkn Farm</Title>
-                    <SubContainer>
-                        {isOwner ? ownerComponent : null}
-                        <NFTButton onClick={handleNFT}>
-                            NFT
-                        </NFTButton>
-                        <LotteryButton onClick={handleLottery}>
-                            Lottery
-                        </LotteryButton>
-                        <Network>
-                            { networkId ? networkId.charAt(0).toUpperCase() + networkId.slice(1) : "N/A" }
-                        </Network>
-                        <AccountWrapper>
-                            <Eth>
-                                { ethBalance ? Number.parseFloat(ethers.utils.formatEther(ethBalance)).toPrecision(3) : "0" } ETH
-                                </Eth>
-                            <Account>
-                                { userAddress ? userAddress.slice(0, 5) + "..." + userAddress.slice(38, 42) : null }
-                            </Account>
-                        </AccountWrapper>
-                    </SubContainer>
-                </Container>
-            </MetaContainer>
+    return (
+        <MetaContainer>
+            <Container>
+                <Title>Strawberry Farm</Title>
+                <SubContainer>
+                    {isOwner ? ownerComponent : null}
+                    <NFTButton onClick={handleNFT}>
+                        NFT
+                    </NFTButton>
+                    <LotteryButton onClick={handleLottery}>
+                        Lottery
+                    </LotteryButton>
+                    <Network>
+                        {networkId ? networkId.charAt(0).toUpperCase() + networkId.slice(1) : "N/A"}
+                    </Network>
+                    <AccountWrapper>
+                        <Eth>
+                            {ethBalance ? Number.parseFloat(ethers.utils.formatEther(ethBalance)).toPrecision(3) : "0"} ETH
+                        </Eth>
+                        <Account>
+                            {userAddress ? userAddress.slice(0, 5) + "..." + userAddress.slice(38, 42) : null}
+                        </Account>
+                    </AccountWrapper>
+                </SubContainer>
+            </Container>
+        </MetaContainer>
     )
 }

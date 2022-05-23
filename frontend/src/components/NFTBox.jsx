@@ -80,48 +80,48 @@ const Circle = styled.button`
 `;
 
 export default function NFTBox() {
-    
-    return(
+
+    return (
         <Container>
             <Title>
                 Mint NFTs
             </Title>
-        <Box>
-            <Banner>
-                <TopBanner>
-                    <div>
-                        Jack-O'-Lantern
-                    </div>
-                </TopBanner>
-            </Banner>
-        
-            <BodyDiv>
-                <ul>
-                    <Li>
-                        Purchase a Jack-O'-Lantern NFT for 1 PMKN
-                    </Li>
-                    <Li>
-                        Each minted Jack-O'-Lantern NFT doubles as a lottery ticket
-                    </Li>
-                    <Li>
-                        All PMKN goes toward the lottery pool to win back
-                    </Li>
-                    <Li>
-                        Click on the NFT tab above to mint an NFT
-                    </Li>
-                </ul>
-            </BodyDiv>
-
-            <Banner>
-                <BottomBanner>
-                    <Circle>
+            <Box>
+                <Banner>
+                    <TopBanner>
                         <div>
-                            Cost: 1 PMKN
+                            Buddha NFT
                         </div>
-                    </Circle>
-                </BottomBanner>
-            </Banner>
-        </Box>
+                    </TopBanner>
+                </Banner>
+
+                <BodyDiv>
+                    <ul>
+                        <Li>
+                            Purchase a Buddha NFT for 1 SBT
+                        </Li>
+                        <Li>
+                            Each minted Buddha NFT doubles as a lottery ticket
+                        </Li>
+                        <Li>
+                            All SBT goes toward the lottery pool to win back
+                        </Li>
+                        <Li>
+                            Click on the NFT tab above to mint an NFT
+                        </Li>
+                    </ul>
+                </BodyDiv>
+
+                <Banner>
+                    <BottomBanner>
+                        <Circle>
+                            <div>
+                                Cost: 1 SBT
+                            </div>
+                        </Circle>
+                    </BottomBanner>
+                </Banner>
+            </Box>
         </Container>
     )
 }

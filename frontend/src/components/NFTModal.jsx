@@ -1,11 +1,11 @@
 import React from "react"
 import styled from "styled-components";
-import { ethers } from "ethers" 
+import { ethers } from "ethers"
 
 import { useUser } from "../context/UserContext"
 import { useContract } from "../context/ContractContext"
 
-const ModalStyle ={
+const ModalStyle = {
     position: 'fixed',
     top: '50%',
     left: '50%',
@@ -84,7 +84,7 @@ export default function LotteryModal() {
 
     const {
         provider,
-        pmknFarmContract,
+        sbtFarmContract,
         sbtTokenContract,
         lotteryContract,
         setIsNFTOpen
@@ -96,40 +96,40 @@ export default function LotteryModal() {
 
     const URI = "https://gateway.pinata.cloud/ipfs/QmbJ9d3mp88MK3y4djxU8PsG1m8773wbmPA4JHE6mVcTc7"
 
-    const mintJack = async() => {
+    const mintBuddha = async () => {
         try {
             let signer = provider.getSigner()
             let tx = await sbtTokenContract.connect(signer).approve(
                 lotteryContract.address, ethers.utils.parseEther("1")
-                )
+            )
             provider.waitForTransaction(tx.hash)
-                .then(async() => {
-                    tx = await pmknFarmContract.connect(signer).mintNFT(userAddress, URI)
+                .then(async () => {
+                    tx = await sbtFarmContract.connect(signer).mintNFT(userAddress, URI)
                 })
-                return tx
+            return tx
         } catch (error) {
             alert(error)
         }
     }
-    
 
-return(
-    <>
-        <div style={OverlayStyle} onClick={closeModal}/>
-        <div style={ModalStyle}>
-            <Container>
+
+    return (
+        <>
+            <div style={OverlayStyle} onClick={closeModal} />
+            <div style={ModalStyle}>
+                <Container>
                     <H1>Mint NFT</H1>
                     <DivBody>
-                        <Img src={URI} alt="display image"/>
+                        <Img src={URI} alt="display image" />
                     </DivBody>
                     <BottomDiv>
-                        <MintButton onClick={mintJack}>
-                            Mint JACK NFT
+                        <MintButton onClick={mintBuddha}>
+                            Mint Buddha NFT
                         </MintButton>
                     </BottomDiv>
-                        
-            </Container>
-        </div>
-    </>
+
+                </Container>
+            </div>
+        </>
     )
 }

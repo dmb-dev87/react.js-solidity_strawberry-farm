@@ -1,10 +1,10 @@
 import React, { useState } from "react"
 import styled from "styled-components";
-import { ethers } from "ethers" 
+import { ethers } from "ethers"
 
 import { useContract } from "../context/ContractContext"
 
-const ModalStyle ={
+const ModalStyle = {
     position: 'fixed',
     top: '50%',
     left: '50%',
@@ -83,10 +83,10 @@ const LotteryButton = styled.button`
     background: linear-gradient(45deg, #5f3c74, white); 
     cursor: pointer;
 `;
- 
+
 export default function OwnerModal() {
 
-    const [ transferAmount, setTransferAmount ] = useState("");
+    const [transferAmount, setTransferAmount] = useState("");
 
     const {
         linkBalance,
@@ -102,9 +102,9 @@ export default function OwnerModal() {
 
     const handleTransfer = (event) => {
         setTransferAmount(event.target.value)
-    } 
+    }
 
-    const addLink = async() => {
+    const addLink = async () => {
         try {
             let signer = provider.getSigner()
             let amount = ethers.utils.parseEther(transferAmount)
@@ -115,7 +115,7 @@ export default function OwnerModal() {
         }
     }
 
-    const withdrawLink = async() => {
+    const withdrawLink = async () => {
         try {
             let signer = provider.getSigner()
             let tx = await lotteryContract.connect(signer).withdrawLink()
@@ -125,7 +125,7 @@ export default function OwnerModal() {
         }
     }
 
-    const startLottery = async() => {
+    const startLottery = async () => {
         try {
             let signer = provider.getSigner()
             let tx = await lotteryContract.connect(signer).getWinningNumber()
@@ -135,35 +135,35 @@ export default function OwnerModal() {
         }
     }
 
-return(
-    <>
-        <div style={OverlayStyle} onClick={closeModal}/>
-        <div style={ModalStyle}>
-            <Container>
-                <H1>
-                    Owner
-                </H1>
-                <DivBody>
-                    <div>
-                        Link Balance: {linkBalance ? linkBalance : "-"}
-                    </div>
-                    <div>
-                        <Input placeholder="Link Amount" onChange={handleTransfer} />
-                        <LinkButton onClick={addLink}>
-                            Add Link
-                        </LinkButton>
-                        <LinkButton onClick={withdrawLink}>
-                            Withdraw
-                        </LinkButton>
-                    </div>  
-                </DivBody>
-                <BottomDiv>
-                    <LotteryButton onClick={startLottery}>
-                        Start Lottery
-                    </LotteryButton>
-                </BottomDiv>
-            </Container>
-        </div>
-    </>
+    return (
+        <>
+            <div style={OverlayStyle} onClick={closeModal} />
+            <div style={ModalStyle}>
+                <Container>
+                    <H1>
+                        Owner
+                    </H1>
+                    <DivBody>
+                        <div>
+                            Link Balance: {linkBalance ? linkBalance : "-"}
+                        </div>
+                        <div>
+                            <Input placeholder="Link Amount" onChange={handleTransfer} />
+                            <LinkButton onClick={addLink}>
+                                Add Link
+                            </LinkButton>
+                            <LinkButton onClick={withdrawLink}>
+                                Withdraw
+                            </LinkButton>
+                        </div>
+                    </DivBody>
+                    <BottomDiv>
+                        <LotteryButton onClick={startLottery}>
+                            Start Lottery
+                        </LotteryButton>
+                    </BottomDiv>
+                </Container>
+            </div>
+        </>
     )
 }

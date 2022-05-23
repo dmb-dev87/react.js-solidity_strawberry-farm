@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useUser } from "../context/UserContext"
 import { useContract } from "../context/ContractContext"
 
-const ModalStyle ={
+const ModalStyle = {
     position: 'fixed',
     top: '50%',
     left: '50%',
@@ -93,10 +93,10 @@ export default function LotteryModal() {
         setIsLotteryOpen(false)
     }
 
-    const claimWinnings = async() => {
+    const claimWinnings = async () => {
         try {
             let signer = provider.getSigner()
-            let tx = await lotteryContract.connect(signer).claimLottoWinnings()            
+            let tx = await lotteryContract.connect(signer).claimLottoWinnings()
             return tx
         } catch (error) {
             alert(error)
@@ -107,18 +107,18 @@ export default function LotteryModal() {
     const _lotteryCount = lotteryCount ? lotteryCount : "0"
     const _userNFTs = userNFTs ? userNFTs : "-"
     const lotteryPoolAmount = lotteryBalance ? lotteryBalance : "0"
-    
-return(
-    
-    <>
-        <div style={OverlayStyle} onClick={closeLotteryModal}/>
-        <div style={ModalStyle}>
-            <Container>
+
+    return (
+
+        <>
+            <div style={OverlayStyle} onClick={closeLotteryModal} />
+            <div style={ModalStyle}>
+                <Container>
                     <H1>Lottery</H1>
                     <DivBody>
                         <ul>
                             <Li>
-                                Lottery Count: {_lotteryCount} 
+                                Lottery Count: {_lotteryCount}
                             </Li>
                             <Li>
                                 Winning Number: {_winningNumber}
@@ -127,17 +127,17 @@ return(
                                 Your Number(s): {_userNFTs}
                             </Li>
                             <Li>
-                                Lottery Pool: {lotteryPoolAmount} PMKN
+                                Lottery Pool: {lotteryPoolAmount} SBT
                             </Li>
                         </ul>
-                        </DivBody>
-                        <BottomDiv>
+                    </DivBody>
+                    <BottomDiv>
                         <ClaimButton onClick={claimWinnings}>
                             Claim Winnings
                         </ClaimButton>
-                        </BottomDiv>
-            </Container>
-        </div>
-    </>
+                    </BottomDiv>
+                </Container>
+            </div>
+        </>
     )
 }

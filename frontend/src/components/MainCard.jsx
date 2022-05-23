@@ -48,14 +48,14 @@ const AlignBox = styled.div`
 export default function MainCard() {
 
     const {
-        pmknBalance
+        sbtBalance
     } = useUser();
 
-    return(
+    return (
         <Container>
             <Card>
                 <CardBanner>
-                    PMKN Balance: {pmknBalance ? Number.parseFloat(ethers.utils.formatEther(pmknBalance)).toFixed(3).toString() : "0"}
+                    SBT Balance: {sbtBalance ? Number.parseFloat(ethers.utils.formatEther(sbtBalance)).toFixed(3).toString() : "0"}
                 </CardBanner>
                 <AlignBox>
                     <StakeBox />

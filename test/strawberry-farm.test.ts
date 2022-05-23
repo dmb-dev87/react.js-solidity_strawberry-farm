@@ -220,8 +220,8 @@ describe("Start from deployment for time increase", () => {
     let minter = await sbtToken.MINTER_ROLE()
     await sbtToken.grantRole(minter, sbtFarm.address)
 
-    let jackMinter = await buddhaNft.MINTER_ROLE()
-    await buddhaNft.grantRole(jackMinter, sbtFarm.address)
+    let buddhaMinter = await buddhaNft.MINTER_ROLE()
+    await buddhaNft.grantRole(buddhaMinter, sbtFarm.address)
 
     let toTransfer = ethers.utils.parseEther("10")
     await mockDai.approve(sbtFarm.address, toTransfer)

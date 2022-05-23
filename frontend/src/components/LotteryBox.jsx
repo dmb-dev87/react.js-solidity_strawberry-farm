@@ -86,49 +86,49 @@ export default function LotteryBox() {
     const {
         lotteryBalance,
     } = useContract();
-    
-    return(
+
+    return (
         <Container>
             <Title>
                 Lottery
             </Title>
-        <Box>
-            <Banner>
-                <TopBanner>
-                    <div>
-                        Jack-O'-Lottery
-                    </div>
-                </TopBanner>
-            </Banner>
-        
-            <BodyDiv>
-                <ul>
-                    <Li>
-                        Each minted Jack-O'-Lantern NFT doubles as a lottery ticket
-                    </Li>
-                    <Li>
-                        The tokenId of the JACK NFT is your lottery ticket number
-                    </Li>
-                    <Li>
-                        Winning number is verifiably random using Chainlink's VRF
-                    </Li>
-                    <Li>
-                        Click on the Lottery tab above to see the results of the latest lottery
-                    </Li>
-                </ul>
-            </BodyDiv>
-
-            <Banner>
-                <BottomBanner>
-                    <Circle>
-                        Prize Pool: 
+            <Box>
+                <Banner>
+                    <TopBanner>
                         <div>
-                            {lotteryBalance ? lotteryBalance : "0"} PMKN
+                            Buddha-Lottery
                         </div>
-                    </Circle>
-                </BottomBanner>
-            </Banner>
-        </Box>
+                    </TopBanner>
+                </Banner>
+
+                <BodyDiv>
+                    <ul>
+                        <Li>
+                            Each minted Buddha NFT doubles as a lottery ticket
+                        </Li>
+                        <Li>
+                            The tokenId of the Buddha NFT is your lottery ticket number
+                        </Li>
+                        <Li>
+                            Winning number is verifiably random using Chainlink's VRF
+                        </Li>
+                        <Li>
+                            Click on the Lottery tab above to see the results of the latest lottery
+                        </Li>
+                    </ul>
+                </BodyDiv>
+
+                <Banner>
+                    <BottomBanner>
+                        <Circle>
+                            Prize Pool:
+                            <div>
+                                {lotteryBalance ? lotteryBalance : "0"} SBT
+                            </div>
+                        </Circle>
+                    </BottomBanner>
+                </Banner>
+            </Box>
         </Container>
     )
 }

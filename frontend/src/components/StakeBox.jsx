@@ -95,17 +95,17 @@ const Circle = styled.button`
 export default function StakeBox() {
 
     const {
-        daiBalance, 
+        daiBalance,
         stakingBalance,
     } = useUser();
 
     const {
         provider,
         daiContract,
-        pmknFarmContract,
+        sbtFarmContract,
     } = useContract();
 
-    const [ transferAmount, setTransferAmount ] = useState("");
+    const [transferAmount, setTransferAmount] = useState("");
 
     /**
      * @notice Fired when user types in input. Sets transfer amount for stake/unstake functions 
@@ -117,15 +117,15 @@ export default function StakeBox() {
     /**
      * @notice Calls the stake function
      */
-    const stake = async() => {
+    const stake = async () => {
         try {
             let signer = provider.getSigner()
             let amount = ethers.utils.parseEther(transferAmount)
-            let tx = await daiContract.connect(signer).approve(pmknFarmContract.address, amount)
+            let tx = await daiContract.connect(signer).approve(sbtFarmContract.address, amount)
             provider.waitForTransaction(tx.hash)
-            .then(async() => {
-                tx = await pmknFarmContract.connect(signer).stake(amount)
-            })
+                .then(async () => {
+                    tx = await sbtFarmContract.connect(signer).stake(amount)
+                })
             return tx
         } catch (error) {
             alert(error)
@@ -135,18 +135,18 @@ export default function StakeBox() {
     /**
      * @notice Calls the unstake function
      */
-    const unstake = async() => {
+    const unstake = async () => {
         try {
             let signer = provider.getSigner()
             let amount = ethers.utils.parseEther(transferAmount)
-            let tx = await pmknFarmContract.connect(signer).unstake(amount)
+            let tx = await sbtFarmContract.connect(signer).unstake(amount)
             return tx
         } catch (error) {
             alert(error)
         }
     }
 
-    return(
+    return (
         <Container>
             <Title>
                 Stake/Unstake
@@ -154,13 +154,13 @@ export default function StakeBox() {
             <Box>
                 <Banner>
                     <TopBanner>
-                    <Img src={MarkDai} alt="DAI logo"/>
-                            DAI (1 PMKN / Day)
+                        <Img src={MarkDai} alt="DAI logo" />
+                        DAI (1 SBT / Day)
                     </TopBanner>
                 </Banner>
                 <AlignInput>
-                    <StakeInput 
-                        onChange={handleTransfer} 
+                    <StakeInput
+                        onChange={handleTransfer}
                         placeholder="Input Amount"
                     />
                 </AlignInput>
@@ -179,13 +179,13 @@ export default function StakeBox() {
                         <Circle>
                             Unstaked:
                             <div>
-                                { daiBalance ? ethers.utils.formatEther(daiBalance) : "0" }
+                                {daiBalance ? ethers.utils.formatEther(daiBalance) : "0"}
                             </div>
                         </Circle>
                         <Circle>
                             Staked:
                             <div>
-                                { stakingBalance ? ethers.utils.formatEther(stakingBalance) : "0" }
+                                {stakingBalance ? ethers.utils.formatEther(stakingBalance) : "0"}
                             </div>
                         </Circle>
                     </BottomBanner>
