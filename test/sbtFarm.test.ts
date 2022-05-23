@@ -21,7 +21,7 @@ describe("SbtFarm Contract", () => {
   let sbtFarm: Contract;
   let mockDai: Contract;
   let sbtToken: Contract;
-  let jackOLantern: Contract;
+  let buddhaNft: Contract;
   let lottery: Contract;
 
   const daiAmount: BigNumber = ethers.utils.parseEther("25000");
@@ -31,17 +31,17 @@ describe("SbtFarm Contract", () => {
     const SbtFarm = await ethers.getContractFactory("StrawberryFarm");
     const MockERC20 = await ethers.getContractFactory("MockERC20");
     const SbtToken = await ethers.getContractFactory("StrawberryToken");
-    const JackOLantern = await ethers.getContractFactory("JackOLantern");
+    const BuddhaNft = await ethers.getContractFactory("BuddhaNft");
     const Lottery = await ethers.getContractFactory("Lottery");
 
     [owner, alice, bob, carol, dave, eve] = await ethers.getSigners();
 
     mockDai = await MockERC20.deploy("MockDai", "mDAI")
     sbtToken = await SbtToken.deploy()
-    jackOLantern = await JackOLantern.deploy()
+    buddhaNft = await BuddhaNft.deploy()
 
     const lottoConfig = [
-      jackOLantern.address,
+      buddhaNft.address,
       sbtToken.address,
       "0xa36085F69e2889c224210F603D836748e7dC0088",
       "0xdD3782915140c8f3b190B5D67eAc6dc5760C46E9", // Coordinator
@@ -68,7 +68,7 @@ describe("SbtFarm Contract", () => {
     let sbtFarmParams: Array<string | BigNumber> = [
       mockDai.address,
       sbtToken.address,
-      jackOLantern.address,
+      buddhaNft.address,
       lottery.address,
       nftPrice
     ]
@@ -189,7 +189,7 @@ describe("Start from deployment for time increase", () => {
   let mockDai: Contract
   let sbtFarm: Contract
   let sbtToken: Contract
-  let jackOLantern: Contract
+  let buddhaNft: Contract
   let lottery: Contract
 
   beforeEach(async () => {
@@ -197,14 +197,14 @@ describe("Start from deployment for time increase", () => {
     const SbtFarm = await ethers.getContractFactory("StrawberryFarm");
     const MockERC20 = await ethers.getContractFactory("MockERC20");
     const SbtToken = await ethers.getContractFactory("StrawberryToken");
-    const JackOLantern = await ethers.getContractFactory("JackOLantern");
+    const BuddhaNft = await ethers.getContractFactory("BuddhaNft");
     const Lottery = await ethers.getContractFactory("Lottery");
     [alice] = await ethers.getSigners();
     mockDai = await MockERC20.deploy("MockDai", "mDAI")
     sbtToken = await SbtToken.deploy()
-    jackOLantern = await JackOLantern.deploy()
+    buddhaNft = await BuddhaNft.deploy()
     let lottoConfig = [
-      jackOLantern.address,
+      buddhaNft.address,
       sbtToken.address,
       "0xa36085F69e2889c224210F603D836748e7dC0088",
       "0xdD3782915140c8f3b190B5D67eAc6dc5760C46E9", // Coordinator
@@ -219,15 +219,15 @@ describe("Start from deployment for time increase", () => {
     sbtFarm = await SbtFarm.deploy(
       mockDai.address,
       sbtToken.address,
-      jackOLantern.address,
+      buddhaNft.address,
       lottery.address,
       nftPrice
     )
     let minter = await sbtToken.MINTER_ROLE()
     await sbtToken.grantRole(minter, sbtFarm.address)
 
-    let jackMinter = await jackOLantern.MINTER_ROLE()
-    await jackOLantern.grantRole(jackMinter, sbtFarm.address)
+    let jackMinter = await buddhaNft.MINTER_ROLE()
+    await buddhaNft.grantRole(jackMinter, sbtFarm.address)
 
     let toTransfer = ethers.utils.parseEther("10")
     await mockDai.approve(sbtFarm.address, toTransfer)
