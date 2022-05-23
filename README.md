@@ -13,17 +13,6 @@ https://medium.com/coinmonks/yield-farming-tutorial-part-3-53dd62bc7819
 
 ***
 
-## Installation
-In directory root:
-```
-npm i
-```
-***
-## Testing
-```
-npx hardhat test
-```
-***
 ## Deployment
 ### Prerequisites
 This dApp accepts DAI as its staking token; therefore, you'll need to acquire Kovan DAI if you deploy to Kovan (as it's preconfigured). To attain kDAI, you'll need to lock kETH in a Maker vault in exchange for kDAI.
