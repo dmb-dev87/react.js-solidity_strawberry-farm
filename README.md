@@ -9,6 +9,8 @@ https://medium.com/coinmonks/yield-farming-tutorial-part-1-3fd5972ce717
 
 https://medium.com/coinmonks/yield-farming-tutorial-part-2-ea5b5254805d
 
+https://medium.com/coinmonks/yield-farming-tutorial-part-3-53dd62bc7819
+
 ***
 
 ## Installation
