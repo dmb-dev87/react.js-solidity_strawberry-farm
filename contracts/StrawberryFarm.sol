@@ -4,6 +4,8 @@ pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "./StrawberryToken.sol";
+import "./BuddhaNft.sol";
+import "./Lottery.sol";
 
 contract StrawberryFarm {
     mapping(address => uint256) public stakingBalance;
@@ -14,10 +16,16 @@ contract StrawberryFarm {
 
     mapping(address => uint256) public sbtBalance;
 
+    mapping(string => uint256) public nftCount;
+
     string public name = "SBT Farm";
 
     IERC20 public daiToken;
     StrawberryToken public sbtToken;
+    BuddhaNft public buddhaNft;
+    Lottery public lottery;
+
+    uint256 private nftPrice;
 
     event Stake(address indexed from, uint256 amount);
 
@@ -25,9 +33,20 @@ contract StrawberryFarm {
 
     event YieldWithdraw(address indexed to, uint256 amount);
 
-    constructor(IERC20 _daiToken, StrawberryToken _sbtToken) {
+    event MintNFT(address indexed to, uint256 indexed tokenId);
+
+    constructor(
+        IERC20 _daiToken,
+        StrawberryToken _sbtToken,
+        BuddhaNft _buddhaNft,
+        Lottery _lottery,
+        uint256 _nftPrice
+    ) {
         daiToken = _daiToken;
         sbtToken = _sbtToken;
+        buddhaNft = _buddhaNft;
+        lottery = _lottery;
+        nftPrice = _nftPrice;
     }
 
     function stake(uint256 amount) public {
@@ -103,5 +122,13 @@ contract StrawberryFarm {
         sbtToken.mint(msg.sender, toTransfer);
 
         emit YieldWithdraw(msg.sender, toTransfer);
+    }
+
+    function mintNFT(address user, string memory tokenURI) public {
+        require(sbtToken.balanceOf(msg.sender) >= nftPrice, "Not enough SBT");
+        lottery.addToLotteryPool(msg.sender, nftPrice);
+        uint256 tokenId = buddhaNft.mintItem(user, tokenURI);
+        nftCount[tokenURI]++;
+        emit MintNFT(msg.sender, tokenId);
     }
 }

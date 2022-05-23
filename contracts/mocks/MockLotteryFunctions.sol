@@ -79,7 +79,7 @@ contract MockLotteryFunctions is Ownable, VRFConsumerBase {
         emit AddPmkn(msg.sender, pmkn);
     }
 
-    function validateWinner(address user) internal returns (bool) {
+    function validateWinner(address user) internal view returns (bool) {
         uint256 totalNfts = buddhaNft.balanceOf(user);
         uint256 winNum = winningNumber[lotteryCount - 1];
         for (uint256 i; i < totalNfts; i++) {
@@ -87,6 +87,8 @@ contract MockLotteryFunctions is Ownable, VRFConsumerBase {
                 return true;
             }
         }
+
+        return false;
     }
 
     function claimLottoWinnings() public {

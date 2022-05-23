@@ -76,7 +76,7 @@ contract Lottery is Ownable, VRFConsumerBase {
         sbtToken.transferFrom(from, address(this), pmkn);
     }
 
-    function validateWinner(address user) internal returns (bool) {
+    function validateWinner(address user) internal view returns (bool) {
         uint256 totalNfts = buddhaNft.balanceOf(user);
         uint256 winNum = winningNumber[lotteryCount - 1];
         unchecked {
@@ -86,6 +86,8 @@ contract Lottery is Ownable, VRFConsumerBase {
                 }
             }
         }
+
+        return false;
     }
 
     function claimLottoWinnings() public {

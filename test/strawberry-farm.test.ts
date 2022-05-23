@@ -7,7 +7,7 @@ import { time } from "@openzeppelin/test-helpers";
 
 chai.use(solidity)
 
-describe("SbtFarm Contract", () => {
+describe("StrawberryFarm Contract", () => {
 
   let res: any;
 
@@ -51,10 +51,6 @@ describe("SbtFarm Contract", () => {
     ]
 
     lottery = await Lottery.deploy(...lottoConfig)
-
-    /*//////////////////////
-    // Dai Transfers      //
-    //////////////////////*/
 
     await Promise.all([
       mockDai.mint(owner.address, daiAmount),
@@ -140,7 +136,7 @@ describe("SbtFarm Contract", () => {
     it("should revert stake without allowance", async () => {
       let toTransfer = ethers.utils.parseEther("50")
       await expect(sbtFarm.connect(bob).stake(toTransfer))
-        .to.be.revertedWith("transfer amount exceeds allowance")
+        .to.be.revertedWith("ERC20: insufficient allowance")
     })
 
     it("should revert with not enough funds", async () => {
@@ -278,7 +274,7 @@ describe("Start from deployment for time increase", () => {
       await time.increase(86400)
       await sbtFarm.unstake(ethers.utils.parseEther("5"))
 
-      res = await sbtFarm.pmknBalance(alice.address)
+      res = await sbtFarm.sbtBalance(alice.address)
       expect(Number(ethers.utils.formatEther(res)))
         .to.be.approximately(10, .001)
     })
@@ -303,7 +299,7 @@ describe("Start from deployment for time increase", () => {
       await mockDai.approve(sbtFarm.address, toTransfer)
       await sbtFarm.stake(toTransfer)
 
-      res = await sbtFarm.pmknBalance(alice.address)
+      res = await sbtFarm.sbtBalance(alice.address)
       let formatRes = ethers.utils.formatEther(res)
 
       expect(Number.parseFloat(formatRes).toFixed(3))
@@ -376,7 +372,7 @@ describe("Start from deployment for time increase", () => {
       let toTransfer = ethers.utils.parseEther("10")
       await sbtFarm.unstake(toTransfer)
 
-      res = await sbtFarm.pmknBalance(alice.address)
+      res = await sbtFarm.sbtBalance(alice.address)
 
       expect(await sbtFarm.withdrawYield())
         .to.emit(sbtFarm, "YieldWithdraw")
