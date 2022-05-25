@@ -20,6 +20,12 @@ export default {
       gasPrice: "auto",
       url: process.env.KOVAN_KEY,
       accounts: [`0x${process.env.PRIVATE_KEY}`]
+    },
+    rinkeby: {
+      gas: "auto",
+      gasPrice: "auto",
+      url: process.env.RINKEBY_KEY,
+      accounts: [`0x${process.env.PRIVATE_KEY}`]
     }
   },
   etherscan: {
